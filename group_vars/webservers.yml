@@ -1,3 +1,3 @@
 webserver_static_sites:
-  - name: site1.example.com
-    root: /usr/share/nginx/site1.example.com
+  - name: site1.com
+    root: /usr/share/nginx/site1.com
