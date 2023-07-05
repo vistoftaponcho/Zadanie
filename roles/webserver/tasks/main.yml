@@ -13,23 +13,16 @@
     mode: 0644
   notify: Reload NGINX
 
-# Uncomment below to use file-based deployment instead of git-based deployment
-# Included only as an example
-# - name: Copy site contents
-#   copy:
-#     dest: "{{ item.root }}/"
-#     src: "usr/share/nginx/{{ item.name }}/"
-#     owner: root
-#     group: root
-#     mode: 0755
-#   with_items: "{{ webserver_static_sites }}"
 
-- name: Clone git repositories
-  git:
-    repo: "{{ item.repository}}"
-    dest: "{{ item.root }}"
-    force: yes
+- name: Copy site contents
+  copy:
+    dest: "{{ item.root }}/"
+    src: "usr/share/nginx/{{ item.name }}/"
+    owner: root
+    group: root
+    mode: 0755
   with_items: "{{ webserver_static_sites }}"
+
 
 - name: Add static site config files
   template:
